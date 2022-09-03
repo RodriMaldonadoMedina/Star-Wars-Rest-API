@@ -30,6 +30,8 @@ def handle_invalid_usage(error):
 def sitemap():
     return generate_sitemap(app)
 
+####          METODOS GET            ####
+
 @app.route('/users', methods=['GET'])
 def get_users():
     #user_list = User.query.all()
@@ -58,6 +60,20 @@ def get_planet():
 def get_planet_id(planet_id):
     return jsonify(planet_id)
 
+####          METODOS POST            ####
+
+@app.route('/users', methods=['POST'])
+def post_users():
+    return jsonify('Se crea el user')
+
+@app.route('/people', methods=['POST'])
+def post_people():
+    return jsonify('people creado')
+
+@app.route('/planet', methods=['POST'])
+def post_planet():
+    return jsonify('planet creado')
+
 @app.route('/favorite/planet/<int:planet_id>', methods=['POST'])
 def post_favorite_planet(planet_id):
     return jsonify(planet_id)
@@ -66,6 +82,34 @@ def post_favorite_planet(planet_id):
 def post_favorite_people(people_id):
     return jsonify(people_id)
 
+####          METODOS PUT            ####
+
+@app.route('/users/<int:user_id>', methods=['PUT'])
+def put_users(user_id):
+    return jsonify('modificar el user con id: ' + str(user_id))
+
+@app.route('/people/<int:people_id>', methods=['PUT'])
+def put_people(people_id):
+    return jsonify('modificar people con id: ' + str(people_id))
+
+@app.route('/planet/<int:planet_id>', methods=['PUT'])
+def put_planet(planet_id):
+    return jsonify('modificar planeta con id: '+ str(planet_id))
+
+####          METODOS DELETE            ####
+
+@app.route('/users/<int:user_id>', methods=['DELETE'])
+def delete_users(user_id):
+    return jsonify('eliminar el user con id: ' + str(user_id))
+
+@app.route('/people/<int:people_id>', methods=['DELETE'])
+def delete_people(people_id):
+    return jsonify('eliminar people con id: ' + str(people_id))
+
+@app.route('/planet/<int:planet_id>', methods=['DELETE'])
+def delete_planet(planet_id):
+    return jsonify('eliminar planeta con id: '+ str(planet_id))
+
 @app.route('/favorite/planet/<int:planet_id>', methods=['DELETE'])
 def delete_favorite_planet(planet_id):
     return jsonify(planet_id)
@@ -73,6 +117,7 @@ def delete_favorite_planet(planet_id):
 @app.route('/favorite/people/<int:people_id>', methods=['DELETE'])
 def delete_favorite_people(people_id):
     return jsonify(people_id)
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

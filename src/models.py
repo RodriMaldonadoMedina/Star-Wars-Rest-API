@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from eralchemy import draw_er
+#from eralchemy import render_er
 
 db = SQLAlchemy()
 
@@ -131,4 +131,4 @@ class Nave_Favorito(db.Model):
         }
 
 ## Draw from SQLAlchemy base
-draw_er(db.Model, 'diagram.png')
+#render_er(db.Model, 'diagram.png')
